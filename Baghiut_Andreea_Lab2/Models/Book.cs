@@ -21,6 +21,6 @@ namespace Baghiut_Andreea_Lab2.Models
 
         public Publisher? Publisher { get; set; }
 
-        public ICollection<BookCategory>? BookCategories { get; set; }
+        public ICollection<BookCategory>? BookCategory { get; set; }
     }
 }

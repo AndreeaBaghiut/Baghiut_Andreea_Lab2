@@ -21,28 +21,26 @@ namespace Baghiut_Andreea_Lab2.Pages.Books
         }
 
         public IList<Book> Book { get; set; } = default!;
-        public IList<Author> Authors { get; set; } = default!;
-        public SelectListItem AuthorsList { get; set; } = default!;
-
-        public async Task OnGetAsync()
+        public BookData BookD { get; set; }
+        public int BookID { get; set; }
+        public int CategoryID { get; set; }
+        public async Task OnGetAsync(int? id, int? categoryID)
         {
-            if (_context.Book != null)
-            {
-                Book = await _context.Book
-                    .Include(b => b.Author)
-                    .Include(b => b.Publisher)
-                    .ToListAsync();
-            }
+            BookD = new BookData();
 
-            if (_context.Author != null)
+            BookD.Books = await _context.Book
+            .Include(b => b.Publisher)
+            .Include(b => b.BookCategory)
+            .ThenInclude(b => b.Category)
+            .AsNoTracking()
+            .OrderBy(b => b.Title)
+            .ToListAsync();
+            if (id != null)
             {
-                Authors = await _context.Author.ToListAsync();
-
-                //AuthorsList = Authors.Select(x => new SelectListItem
-                //{
-                //    Text = x.FirstName,
-                //    Value = x.FirstName
-                //}).ToList();
+                BookID = id.Value;
+                Book book = BookD.Books
+                .Where(i => i.ID == id.Value).Single();
+                BookD.Categories = book.BookCategory.Select(s => s.Category);
             }
         }
     }

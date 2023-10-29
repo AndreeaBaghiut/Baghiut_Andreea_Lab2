@@ -2,7 +2,7 @@
 @model Baghiut_Andreea_Lab2.Pages.Books.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Books";
 }
 
 <h1>Index</h1>
@@ -28,19 +28,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].BookCategory)
+            </th>
+            <th>
+            </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Book)
+        @foreach (var item in Model.BookD.Books)
         {
-            <tr>
+            string selectedRow = "";
+            if (item.ID == Model.BookID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     <select name="Authors">
-                        @foreach (var author in Model.Authors)
+                        @foreach (var author in Model.Author)
                         {
                             <option value=@author.ID>@(author.FirstName + author.LastName)</option>
                         }
@@ -54,6 +63,14 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+                </td>
+                <td>
+                    @{
+                        foreach (var category in item.BookCategory)
+                        {
+                            @category.Category.ID @: @category.Category.CategoryName <br />
+                        }
+                    }
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

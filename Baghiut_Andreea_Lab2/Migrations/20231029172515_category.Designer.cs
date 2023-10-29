@@ -4,6 +4,7 @@ using Baghiut_Andreea_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Baghiut_Andreea_Lab2.Migrations
 {
     [DbContext(typeof(Baghiut_Andreea_Lab2Context))]
-    partial class Baghiut_Andreea_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231029172515_category")]
+    partial class category
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,11 +60,10 @@ namespace Baghiut_Andreea_Lab2.Migrations
                     b.Property<int?>("PublisherID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishingDate")
+                    b.Property<DateTime?>("PublishingDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

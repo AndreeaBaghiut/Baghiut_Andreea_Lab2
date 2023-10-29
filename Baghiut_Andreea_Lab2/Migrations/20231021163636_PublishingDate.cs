@@ -18,7 +18,7 @@ namespace Baghiut_Andreea_Lab2.Migrations
                 oldType: "decimal(18,2)");
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "PublishingDate",
+                name: "PublishingDate2",
                 table: "Book",
                 type: "datetime2",
                 nullable: false,

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Baghiut_Andreea_Lab2.Migrations
 {
     [DbContext(typeof(Baghiut_Andreea_Lab2Context))]
-    [Migration("20231029160328_BookCategory")]
-    partial class BookCategory
+    [Migration("20231029173400_RemovePublishingDateColumn")]
+    partial class RemovePublishingDateColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,11 +60,10 @@ namespace Baghiut_Andreea_Lab2.Migrations
                     b.Property<int?>("PublisherID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishingDate")
+                    b.Property<DateTime?>("PublishingDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -108,7 +107,6 @@ namespace Baghiut_Andreea_Lab2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("CategoryName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -125,7 +123,6 @@ namespace Baghiut_Andreea_Lab2.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("PublisherName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

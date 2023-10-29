@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Baghiut_Andreea_Lab2.Data;
 using Baghiut_Andreea_Lab2.Models;
 
-namespace Baghiut_Andreea_Lab2.Pages.Authors
+namespace Baghiut_Andreea_Lab2.Pages.Categories
 {
     public class EditModel : PageModel
     {
@@ -30,7 +30,7 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
                 return NotFound();
             }
 
-            var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
+            var author =  await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
             if (author == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
 
         private bool AuthorExists(int id)
         {
-            return (_context.Author?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Author?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model Baghiut_Andreea_Lab2.Pages.Authors.DeleteModel
+@model Baghiut_Andreea_Lab2.Pages.Categories.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -25,7 +25,7 @@
             @Html.DisplayFor(model => model.Author.LastName)
         </dd>
     </dl>
-
+    
     <form method="post">
         <input type="hidden" asp-for="Author.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

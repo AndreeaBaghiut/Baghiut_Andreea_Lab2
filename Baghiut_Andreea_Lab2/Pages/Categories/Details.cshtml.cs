@@ -8,19 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using Baghiut_Andreea_Lab2.Data;
 using Baghiut_Andreea_Lab2.Models;
 
-namespace Baghiut_Andreea_Lab2.Pages.Authors
+namespace Baghiut_Andreea_Lab2.Pages.Categories
 {
-    public class DeleteModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly Baghiut_Andreea_Lab2.Data.Baghiut_Andreea_Lab2Context _context;
 
-        public DeleteModel(Baghiut_Andreea_Lab2.Data.Baghiut_Andreea_Lab2Context context)
+        public DetailsModel(Baghiut_Andreea_Lab2.Data.Baghiut_Andreea_Lab2Context context)
         {
             _context = context;
         }
 
-        [BindProperty]
-        public Author Author { get; set; } = default!;
+      public Author Author { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,34 +29,15 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
             }
 
             var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
-
             if (author == null)
             {
                 return NotFound();
             }
-            else
+            else 
             {
                 Author = author;
             }
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null || _context.Author == null)
-            {
-                return NotFound();
-            }
-            var author = await _context.Author.FindAsync(id);
-
-            if (author != null)
-            {
-                Author = author;
-                _context.Author.Remove(Author);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
         }
     }
 }

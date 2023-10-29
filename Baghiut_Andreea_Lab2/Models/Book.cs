@@ -12,17 +12,17 @@ namespace Baghiut_Andreea_Lab2.Models
         [Display(Name = "Book Title")]
         public string Title { get; set; }
 
-        [Column(TypeName = "decimal(6, 2)")]
+        public int? AuthorID { get; set; }
+        public Author? Author { get; set; }
 
+        [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime PublishingDate { get; set; }
+       [DataType(DataType.Date)]
+       public DateTime PublishingDate { get; set; }
+
         public int? PublisherID { get; set; }
-        public Publisher? Publisher { get; set; }
-
-        public int? AuthorId { get; set; } //cheie straina
-
-        public Author? Author {  get; set; } //proprietate de navigare
+        public Publisher? Publisher { get; set; } //navigation property
+        public ICollection<BookCategory>? BookCategories { get; internal set; }
     }
 }

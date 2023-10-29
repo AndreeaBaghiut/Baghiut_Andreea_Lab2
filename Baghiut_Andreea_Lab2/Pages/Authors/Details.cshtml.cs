@@ -19,7 +19,7 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
             _context = context;
         }
 
-      public Author Author { get; set; } = default!; 
+        public Author Author { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,12 +28,12 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
                 return NotFound();
             }
 
-            var author = await _context.Author.FirstOrDefaultAsync(m => m.Id == id);
+            var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
             if (author == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Author = author;
             }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Baghiut_Andreea_Lab2.Data;
 using Baghiut_Andreea_Lab2.Models;
 
-namespace Baghiut_Andreea_Lab2.Pages.Authors
+namespace Baghiut_Andreea_Lab2.Pages.Categories
 {
     public class IndexModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Baghiut_Andreea_Lab2.Pages.Authors
             _context = context;
         }
 
-        public IList<Author> Author { get; set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
         {

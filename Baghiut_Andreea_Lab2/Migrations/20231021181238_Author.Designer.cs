@@ -12,108 +12,106 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Baghiut_Andreea_Lab2.Migrations
 {
     [DbContext(typeof(Baghiut_Andreea_Lab2Context))]
-    [Migration("20231021181238_Author")]
-    partial class Author
+    [Migration("20230910173821_Authors")]
+    partial class Authors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.23")
+                .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Baghiut_Andreea_Lab2.Models.Author", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("FirstName")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("LastName")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                b.HasKey("ID");
 
-                    b.ToTable("Author");
-                });
+                b.ToTable("Author");
+            });
 
             modelBuilder.Entity("Baghiut_Andreea_Lab2.Models.Book", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AuthorId")
-                        .HasColumnType("int");
+                b.Property<int?>("AuthorID")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(6,2)");
+                b.Property<decimal>("Price")
+                    .HasColumnType("decimal(6,2)");
 
-                    b.Property<int?>("PublisherID")
-                        .HasColumnType("int");
+                b.Property<int?>("PublisherID")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishingDate")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("PublishingDate")
+                    .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.HasIndex("AuthorId");
+                b.HasIndex("AuthorID");
 
-                    b.HasIndex("PublisherID");
+                b.HasIndex("PublisherID");
 
-                    b.ToTable("Book");
-                });
+                b.ToTable("Book");
+            });
 
             modelBuilder.Entity("Baghiut_Andreea_Lab2.Models.Publisher", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("PublisherName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("PublisherName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.ToTable("Publisher");
-                });
+                b.ToTable("Publisher");
+            });
 
             modelBuilder.Entity("Baghiut_Andreea_Lab2.Models.Book", b =>
-                {
-                    b.HasOne("Baghiut_Andreea_Lab2.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+            {
+                b.HasOne("Baghiut_Andreea_Lab2.Models.Author", "Author")
+                    .WithMany()
+                    .HasForeignKey("AuthorID");
 
-                    b.HasOne("Baghiut_Andreea_Lab2.Models.Publisher", "Publisher")
-                        .WithMany("Books")
-                        .HasForeignKey("PublisherID");
+                b.HasOne("Baghiut_Andreea_Lab2.Models.Publisher", "Publisher")
+                    .WithMany("Books")
+                    .HasForeignKey("PublisherID");
 
-                    b.Navigation("Author");
+                b.Navigation("Author");
 
-                    b.Navigation("Publisher");
-                });
+                b.Navigation("Publisher");
+            });
 
             modelBuilder.Entity("Baghiut_Andreea_Lab2.Models.Publisher", b =>
-                {
-                    b.Navigation("Books");
-                });
+            {
+                b.Navigation("Books");
+            });
 #pragma warning restore 612, 618
         }
     }

@@ -21,6 +21,6 @@ namespace Baghiut_Andreea_Lab2.Data
         public DbSet<Baghiut_Andreea_Lab2.Models.Author>? Author { get; set; } = default!;
         public IEnumerable<object> Category { get; internal set; }
 
-        //public DbSet<Baghiut_Andreea_Lab2.Models.Category>? Category { get; set; }
+        public DbSet<Baghiut_Andreea_Lab2.Models.Category>? Categories { get; set; }
     }
 }

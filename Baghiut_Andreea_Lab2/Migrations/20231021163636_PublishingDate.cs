@@ -18,7 +18,7 @@ namespace Baghiut_Andreea_Lab2.Migrations
                 oldType: "decimal(18,2)");
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "PublishingDate2",
+                name: "PublishingDate",
                 table: "Book",
                 type: "datetime2",
                 nullable: false,
@@ -27,8 +27,8 @@ namespace Baghiut_Andreea_Lab2.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "PublishingDate",
+            migrationBuilder.DropForeignKey(
+                name: "FK_Book_PublishingDate",
                 table: "Book");
 
             migrationBuilder.AlterColumn<decimal>(

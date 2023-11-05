@@ -74,7 +74,7 @@ namespace Baghiut_Andreea_Lab2.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-           /* migrationBuilder.AlterColumn<DateTime>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "PublishingDate",
                 table: "Book",
                 type: "datetime2",
@@ -82,7 +82,7 @@ namespace Baghiut_Andreea_Lab2.Migrations
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldNullable: true);*/
+                oldNullable: true);
         }
     }
 }

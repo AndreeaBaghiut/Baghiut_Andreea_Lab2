@@ -10,10 +10,9 @@ namespace Baghiut_Andreea_Lab2.Models
         public void PopulateAssignedCategoryData(Baghiut_Andreea_Lab2Context context, Book book)
         {
             var allCategories = context.Category;
-            var bookCategories = new HashSet<int>(
-            book.BookCategory.Select(c => c.CategoryID));
+            var bookCategories = new HashSet<int>(book.BookCategory.Select(c => c.CategoryID));
             AssignedCategoryDataList = new List<AssignedCategoryData>();
-            foreach (var cat in allCategories)
+            foreach (var cat in allCategories.Cast<Category>())
             {
                 AssignedCategoryDataList.Add(new AssignedCategoryData
                 {
@@ -34,7 +33,7 @@ namespace Baghiut_Andreea_Lab2.Models
             var selectedCategoriesHS = new HashSet<string>(selectedCategories);
             var bookCategories = new HashSet<int>
             (bookToUpdate.BookCategory.Select(c => c.Category.ID));
-            foreach (var cat in context.Category)
+           foreach (var cat in context.Category.Cast<Category>())
             {
                 if (selectedCategoriesHS.Contains(cat.ID.ToString()))
                 {
@@ -52,10 +51,7 @@ namespace Baghiut_Andreea_Lab2.Models
                 {
                     if (bookCategories.Contains(cat.ID))
                     {
-                        BookCategory courseToRemove
-                        = bookToUpdate
-                        .BookCategories
-                        SingleOrDefault(i => i.CategoryID == cat.ID);
+                        BookCategory courseToRemove = bookToUpdate.BookCategory.SingleOrDefault(i => i.CategoryID == cat.ID);
                         context.Remove(courseToRemove);
                     }
                 }
